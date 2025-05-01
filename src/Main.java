@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -11,9 +12,9 @@ public class Main {
      * but allocation happens at runtime when the method/declaration is reached.
      * Uses a local int[] for the benchmark.
      * Result: This took around 10 milliseconds
-     * SS: https://prnt.sc/vjnry3meeSCw
+     * SS: https://paste.pics/T8BRM
      */
-    /*public static void checkPerformanceForFixedStackDynamic() {
+    public static void checkPerformanceForFixedStackDynamic() {
         int size = 1000000; // 1M
         System.out.println("\n--- Performance Test: Fixed Stack-Dynamic ---");
         System.out.println("Category Implementation: Local int[" + size + "] (fixed size declared locally). Size: " + size);
@@ -31,14 +32,14 @@ public class Main {
         duration = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
         System.out.println("  Result: Sum = " + sum + ", Time = " + duration + " ms");
         System.gc(); // Suggest GC
-    }*/
+    }
 
     /**
      * Performance test for Stack-Dynamic category.
      * Implementation: Local array declaration where user input determines the size at runtime
      * Deallocated after execution
      * Result: it's around takes 6 milliseconds
-     * SS : https://prnt.sc/iXE1e-bzATKO
+     * SS : https://paste.pics/T8BRP
      */
     public static void checkPerformanceForStackDynamic(int size) {
         System.out.println("\n--- Performance Test: Stack-Dynamic ---");
@@ -64,10 +65,13 @@ public class Main {
 
     /**
      * Performance test for Heap-Dynamic category.
-     * Implementation: Java ArrayList, which grows dynamically on the heap.
+     * Implementation: Java ArrayList, which grows dynamically on the heap based on the number of elements it contains.
      * Testing population using add() which may trigger resizing.
+     * Result without an initial capacity set: it took around 60 milliseconds
+     * Result with an initial capacity set: it took around 27 milliseconds
+     * SS : https://paste.pics/T8BRT
      */
-    /*public static void checkPerformanceForHeapDynamic(int size) {
+    public static void checkPerformanceForHeapDynamic(int size) {
         System.out.println("\n--- Performance Test: Heap-Dynamic ---");
         System.out.println("Category Implementation: ArrayList<Integer> using add(). Size: " + size);
         long startTime, endTime, duration;
@@ -94,7 +98,7 @@ public class Main {
         ArrayList<Integer> arrayListWithCap = new ArrayList<>(size);
         sum = 0L;
         for (int i = 0; i < size; i++) {
-            arrayListWithCap.add(i); // Still boxing, less resizing
+            arrayListWithCap.add(i); // Still adding, less resizing
         }
         // Separate summation
         for(Integer val : arrayListWithCap) { sum += val; }
@@ -104,7 +108,7 @@ public class Main {
         arrayListWithCap = null; // Help GC
 
         System.gc(); // Suggest GC
-    }*/
+    }
 
     public static void main(String[] args) {
 
@@ -113,7 +117,7 @@ public class Main {
         * to manipulate and travers, we will measure that how much time
         * it will take for the static type array
         * Result: after running it takes 6 milliseconds
-        * SS: https://prnt.sc/0FrQSfT43pqY
+        * SS: https://paste.pics/T8BRD
         * */
 
         /**
@@ -122,10 +126,9 @@ public class Main {
         time (or class loading time).
         */
 
-       /* System.out.println("\n===== Starting Performance Comparisons =====");
+        System.out.println("===========================================================");
+       System.out.println("===== Starting Performance Comparisons for Static =====");
         int size = 1000000; // 1M
-
-
 
         System.out.println("\n--- Performance Test: Static (Operational Speed) ---");
         System.out.println("Category Implementation: Simulating operations on pre-allocated fixed storage (using local int[]). Size: " + size);
@@ -143,27 +146,65 @@ public class Main {
         duration = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
         System.out.println("  Result: Sum = " + sum + ", Time = " + duration + " ms");
         System.gc(); // Suggest GC
-*/
+        System.out.println("===== Ending Performance Comparisons for Static ========");
+        System.out.println("===========================================================");
 
 
 
+        System.out.println("===========================================================");
 
         int testSize1 = 1000000; // 1M
 
         System.out.println("\n*** Running tests, size: " + testSize1 + " ***");
-       // checkPerformanceForFixedStackDynamic();
+        checkPerformanceForFixedStackDynamic();
 
-        System.out.print("Enter size of array: 1000000 - " );
+       System.out.print("Enter size for the stack-dynamic array: 1000000 - " );
         Scanner input = new Scanner(System.in);
 
         int stackDynamicArraySize = input.nextInt();
-
         checkPerformanceForStackDynamic(stackDynamicArraySize); // set the size during run time
-//        checkPerformanceForFixedHeapDynamic(testSize1);
-//        checkPerformanceForHeapDynamic(testSize1); // Contains two variants inside
+        System.out.println("===========================================================");
 
 
+        System.out.println("===========================================================");
 
-        System.out.println("\n===== Performance Comparisons Complete =====");
+        /**
+         * Performance test for Fixed Heap-Dynamic category.
+         * Implementation: Standard Java array allocated explicitly on the heap with 'new' keyword in the run time
+         * the size will be defined via user input. and Size is fixed after allocation.
+         * Result: it took similar 6 milliseconds
+         * SS : https://prnt.sc/c7BltIImtTMR
+         */
+
+        System.out.print("Enter size for the heap-dynamic array: 1000000 -");
+        int heapDynamicArraySize = input.nextInt();
+        System.out.println("\n--- Performance Test: Fixed Heap-Dynamic ---");
+        System.out.println("Category Implementation: Standard 'new int[" + heapDynamicArraySize + "]' on heap. Size: " + heapDynamicArraySize);
+        long startTimes, endTimes, durations;
+        long sums;
+
+        startTimes = System.nanoTime();
+        int[] array = new int[heapDynamicArraySize]; // Explicit heap allocation request
+        sums = 0L;
+        for (int i = 0; i < heapDynamicArraySize; i++) {
+            array[i] = i;
+            sums += array[i];
+        }
+        endTimes = System.nanoTime();
+        durations = TimeUnit.NANOSECONDS.toMillis(endTimes - startTimes);
+        System.out.println("  Result: Sum = " + sums + ", Time = " + durations + " ms");
+        System.gc(); // Suggest GC
+        System.out.println("===========================================================");
+
+        System.out.println("===========================================================");
+
+        //test for Heap Dynamic
+        checkPerformanceForHeapDynamic(testSize1); // Contains two variants inside
+
+        System.out.println("===== Performance Comparisons Complete =====");
+
+
+        System.out.println("===========================================================");
+
     }
 }
