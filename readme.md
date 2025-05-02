@@ -39,25 +39,28 @@ This program demonstrates and measures the performance of five array categories 
 - Implementation: Array with fixed size (1,000,000) known at compile time
 - Storage allocation occurs when the class is loaded
 - Performance: Approximately 6 milliseconds for population and traversal
-- 
+- ![Java Static Array Performance](https://github.com/alamin5G/FiveTypesOfArrays/blob/5df1510e1d3b142cd235f237179bbce90875d4db/java%20static%20array.png?raw=true)
 
 ### Fixed Stack-Dynamic Arrays
 
 - Implementation: Local array declaration with fixed size known at compile time
 - Allocation happens at runtime when the method is executed
 - Performance: Approximately 10 milliseconds
+- ![Java Fixed Stack-Dynamic Array Performance](https://github.com/alamin5G/FiveTypesOfArrays/blob/5df1510e1d3b142cd235f237179bbce90875d4db/Screenshot%202025-05-02%20032747.png?raw=true)
 
 ### Stack-Dynamic Arrays
 
 - Implementation: Local array declaration where size is determined at runtime via user input
 - Deallocated after method execution
 - Performance: Approximately 6 milliseconds
+- ![Java Stack-Dynamic Array Performance](https://github.com/alamin5G/FiveTypesOfArrays/blob/5df1510e1d3b142cd235f237179bbce90875d4db/Screenshot%202025-05-02%20033508.png?raw=true)
 
 ### Fixed Heap-Dynamic Arrays
 
 - Implementation: Standard Java array allocated explicitly on the heap using the 'new' keyword
 - Size is defined by user input at runtime but fixed after allocation
 - Performance: Approximately 6 milliseconds
+- ![Java Fixed Heap-Dynamic Arrays Performance](https://github.com/alamin5G/FiveTypesOfArrays/blob/5df1510e1d3b142cd235f237179bbce90875d4db/Screenshot%202025-05-02%20034803.png?raw=true)
 
 ### Heap-Dynamic Arrays
 
@@ -65,6 +68,8 @@ This program demonstrates and measures the performance of five array categories 
 - Two variants tested:
   1. Without initial capacity (emphasizes dynamic resizing): ~60 milliseconds
   2. With initial capacity (minimizes resizing): ~27 milliseconds
+  3. ![Java Heap Dynamic Array Performance](https://github.com/alamin5G/FiveTypesOfArrays/blob/5df1510e1d3b142cd235f237179bbce90875d4db/Screenshot%202025-05-02%20035329.png?raw=true)
+
 
 ## Key Findings for Java
 
@@ -90,6 +95,7 @@ This program demonstrates and measures the performance of five array categories 
 
 ### Performance Results Summary
 
+![Pyton Array Performance](https://github.com/alamin5G/FiveTypesOfArrays/blob/5df1510e1d3b142cd235f237179bbce90875d4db/Screenshot%202025-05-02%20043730.png?raw=true)
 
 #### 1. Static
 
