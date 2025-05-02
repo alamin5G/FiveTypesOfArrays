@@ -70,7 +70,6 @@ This program demonstrates and measures the performance of five array categories 
   2. With initial capacity (minimizes resizing): ~27 milliseconds
   3. ![Java Heap Dynamic Array Performance](https://github.com/alamin5G/FiveTypesOfArrays/blob/5df1510e1d3b142cd235f237179bbce90875d4db/Screenshot%202025-05-02%20035329.png?raw=true)
 
-
 ## Key Findings for Java
 
 1. The basic array implementations (Static, Fixed Stack-Dynamic, Stack-Dynamic, and Fixed Heap-Dynamic) show similar performance in Java, typically around 6-10 milliseconds for 1,000,000 elements.
@@ -293,6 +292,6 @@ array = [0] * size for i in range(size): array[i] = i
 
 ## Usage
 
-Run the Java** *'Main.java'*** program in IntelliJ IDEA and follow the prompts to input array sizes when requested. The program will display performance metrics for each array type.
+Run the Java ***Main.java*** program in IntelliJ IDEA and follow the prompts to input array sizes when requested. The program will display performance metrics for each array type.
 
-For the Python implementation, run the '***script1.py***' script in PyCharm using the equivalent Python code structure to compare performance characteristics.
+For the Python implementation, run the '***script1.py***' under the **Python Folder** script in PyCharm using the equivalent Python code structure to compare performance characteristics.
