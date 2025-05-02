@@ -1,3 +1,7 @@
+Name: Md. Alamin
+
+Id: 21303134
+
 # Array Categories Performance Comparison
 
 This project implements a performance comparison of different array categories in Java and Python, as discussed in Chapter 6 (Data Types) of Programming Languages and Structures book.
